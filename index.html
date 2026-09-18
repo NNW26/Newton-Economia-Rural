@@ -23,7 +23,30 @@
             color: #333;
         }
 
+        /* TELA DE LOGIN / BLOQUEIO */
+        #bloqueio-seguranca {
+            max-width: 400px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+            border-top: 6px solid var(--azul-escuro);
+        }
+
+        #bloqueio-seguranca input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+        }
+
         .container { 
+            display: none; /* Oculto por padrão até validar a palavra-passe */
             max-width: 950px; 
             margin: auto; 
             background: white; 
@@ -33,7 +56,6 @@
             border-top: 6px solid var(--azul-escuro);
         }
 
-        /* DESTAQUE ELEGANTE DO CABEÇALHO */
         .header-destaque {
             text-align: center;
             background: linear-gradient(135deg, #11253e, var(--azul-escuro));
@@ -69,106 +91,50 @@
             box-shadow: inset 0 0 8px rgba(255,255,255,0.1), 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .sub-header {
-            text-align: center;
-            color: var(--azul-escuro);
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
+        .sub-header { text-align: center; color: var(--azul-escuro); margin-bottom: 15px; font-size: 1.2em; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         th, td { border: 1px solid #c5d3e8; text-align: center; padding: 9px; font-size: 0.95em; }
-        
-        /* Cabeçalhos e Linhas */
         th.header-sima { background-color: var(--azul-escuro); color: white; text-align: left; font-size: 1.05em; }
         th.header-prod { background-color: var(--azul-medio); color: white; }
         td.empresa { font-weight: bold; text-align: left; background-color: #f8fafc; color: #2c3e50; }
-        
         tr.calc-row { background-color: var(--verde-claro); font-weight: bold; }
         tr.calc-row td { border-color: #b7e1cd; }
         
-        input[type="number"] { 
-            width: 85%; 
-            padding: 6px; 
-            text-align: center; 
-            border: 1px solid #b0bec5; 
-            border-radius: 4px;
-            font-size: 0.95em;
-        }
-        input[type="number"]:focus {
-            outline: none;
-            border-color: var(--azul-medio);
-            box-shadow: 0 0 4px rgba(43, 91, 136, 0.4);
-        }
+        input[type="number"] { width: 85%; padding: 6px; text-align: center; border: 1px solid #b0bec5; border-radius: 4px; font-size: 0.95em; }
+        .seletor-dia { text-align: center; background-color: var(--azul-claro); padding: 12px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #d0e1ed; }
+        .seletor-dia select { padding: 6px 12px; font-size: 1em; border-radius: 4px; border: 1px solid var(--azul-medio); font-weight: bold; color: var(--azul-escuro); }
 
-        .seletor-dia {
-            text-align: center;
-            background-color: var(--azul-claro);
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            border: 1px solid #d0e1ed;
-        }
-
-        .seletor-dia select {
-            padding: 6px 12px;
-            font-size: 1em;
-            border-radius: 4px;
-            border: 1px solid var(--azul-medio);
-            font-weight: bold;
-            color: var(--azul-escuro);
-        }
-
-        /* Botões */
         .btn-container { text-align: center; margin: 20px 0; }
-        button { 
-            font-size: 0.95em; 
-            font-weight: bold; 
-            padding: 11px 18px; 
-            margin: 4px; 
-            border: none; 
-            border-radius: 6px; 
-            cursor: pointer; 
-            color: white; 
-            transition: background 0.2s, transform 0.1s;
-        }
+        button { font-size: 0.95em; font-weight: bold; padding: 11px 18px; margin: 4px; border: none; border-radius: 6px; cursor: pointer; color: white; transition: background 0.2s, transform 0.1s; }
         button:active { transform: scale(0.98); }
-
         .btn-calc { background-color: var(--azul-medio); }
         .btn-calc:hover { background-color: var(--azul-escuro); }
-
         .btn-save { background-color: var(--verde-principal); }
         .btn-save:hover { background-color: var(--verde-hover); }
-
         .btn-excel { background-color: #1d6f42; }
         .btn-excel:hover { background-color: #144e2e; }
-
         .btn-clear { background-color: #c0392b; font-size: 0.85em; padding: 8px 14px; }
-        .btn-clear:hover { background-color: #962d22; }
 
-        /* Tabela Histórico */
         .historico-table th { background-color: var(--azul-escuro); color: white; }
         .historico-table tr:nth-child(even) { background-color: #f8fafc; }
         .media-row { background-color: #d4edda; font-weight: bold; font-size: 1.05em; color: #155724; }
         .media-row td { border-top: 2px solid var(--verde-principal); }
-
-        /* Assinatura de Rodapé */
-        .rodape-assinatura {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #e0e0e0;
-            font-size: 0.82em;
-            color: #777777;
-            font-style: italic;
-            letter-spacing: 0.3px;
-        }
+        .rodape-assinatura { text-align: center; margin-top: 30px; padding-top: 15px; border-top: 1px solid #e0e0e0; font-size: 0.82em; color: #777777; font-style: italic; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- DESTAQUE AJUSTADO -->
+<!-- TELA DE AUTENTICAÇÃO -->
+<div id="bloqueio-seguranca">
+    <h3 style="color: var(--azul-escuro); margin-bottom: 5px;">Acesso Restrito</h3>
+    <p style="font-size: 0.9em; color: #666;">SEAB PR / DERAL - NR Laranjeiras do Sul</p>
+    <input type="password" id="senhaAcesso" placeholder="Digite a palavra-passe" onkeypress="verificarTecla(event)">
+    <br>
+    <button class="btn-calc" onclick="validarAcesso()">Entrar no Sistema</button>
+</div>
+
+<!-- CONTEÚDO DO SISTEMA (BLOQUEADO ATÉ AUTENTICAR) -->
+<div class="container" id="conteudoSistema">
     <div class="header-destaque">
         <h1>SEAB PR / DERAL</h1>
         <div class="destaque-nr">Núcleo Regional de Laranjeiras do Sul</div>
@@ -176,15 +142,11 @@
 
     <div class="sub-header"><strong>SISTEMA SIMA - Cotação Agrícola</strong></div>
     
-    <!-- Seletor do Dia do Mês -->
     <div class="seletor-dia">
         <label for="diaSelect"><strong>Dia do Mês para Registro:</strong> </label>
-        <select id="diaSelect">
-            <!-- Gerado de 1 a 31 via JS -->
-        </select>
+        <select id="diaSelect"></select>
     </div>
 
-    <!-- TABELA DE ENTRADA E CÁLCULO DO DIA -->
     <table>
         <thead>
             <tr>
@@ -226,7 +188,6 @@
                 <td><input type="number" step="0.01" class="val-trigo" value="80.00"></td>
             </tr>
 
-            <!-- RESULTADOS DO DIA -->
             <tr class="calc-row">
                 <td class="empresa">MÍNIMO</td>
                 <td id="min-milho">R$ 0,00</td>
@@ -256,7 +217,6 @@
 
     <hr style="margin: 30px 0; border: 0; border-top: 1px solid #d0e1ed;">
 
-    <!-- TABELA DO HISTÓRICO MENSAL -->
     <h3 style="text-align: center; color: var(--azul-escuro);">Acompanhamento Mensal - Moda (MC) por Dia</h3>
     <table class="historico-table">
         <thead>
@@ -267,9 +227,7 @@
                 <th>TRIGO (MC)</th>
             </tr>
         </thead>
-        <tbody id="corpoHistorico">
-            <!-- Gerado via JS -->
-        </tbody>
+        <tbody id="corpoHistorico"></tbody>
         <tfoot>
             <tr class="media-row">
                 <td>MÉDIA MENSAL</td>
@@ -284,13 +242,33 @@
         <button class="btn-clear" onclick="limparHistorico()">Limpar Histórico do Mês</button>
     </div>
 
-    <!-- ASSINATURA -->
     <div class="rodape-assinatura">
         Laranjeiras do Sul, 2026, elaborado em HTML com IA
     </div>
 </div>
 
 <script>
+    // PALAVRA-PASSE CONFIGURADA
+    const SENHA_CORRETA = "SEAB2026";
+
+    function validarAcesso() {
+        const pass = document.getElementById('senhaAcesso').value;
+        if (pass === SENHA_CORRETA) {
+            document.getElementById('bloqueio-seguranca').style.display = 'none';
+            document.getElementById('conteudoSistema').style.display = 'block';
+            sessionStorage.setItem('sima_autenticado', 'true');
+            initDias();
+            calcularDia();
+            renderHistorico();
+        } else {
+            alert("Palavra-passe incorreta! Acesso negado.");
+        }
+    }
+
+    function verificarTecla(e) {
+        if (e.key === 'Enter') validarAcesso();
+    }
+
     let historicoMensal = JSON.parse(localStorage.getItem('seab_sima_historico')) || {};
 
     function calcularModa(arr) {
@@ -298,7 +276,6 @@
         let contagem = {};
         let maxFreq = 0;
         let moda = arr[0];
-
         for (let num of arr) {
             contagem[num] = (contagem[num] || 0) + 1;
             if (contagem[num] > maxFreq) {
@@ -309,9 +286,7 @@
         return moda;
     }
 
-    function fmt(val) {
-        return "R$ " + val.toFixed(2).replace(".", ",");
-    }
+    function fmt(val) { return "R$ " + val.toFixed(2).replace(".", ","); }
 
     function obterValores(classe) {
         let inputs = document.querySelectorAll("." + classe);
@@ -326,46 +301,42 @@
     function calcularDia() {
         let produtos = ['milho', 'soja', 'trigo'];
         let resultados = {};
-
         produtos.forEach(p => {
             let vals = obterValores('val-' + p);
             if (vals.length > 0) {
                 let min = Math.min(...vals);
                 let mc = calcularModa(vals);
                 let max = Math.max(...vals);
-
                 document.getElementById('min-' + p).innerText = fmt(min);
                 document.getElementById('mc-' + p).innerText = fmt(mc);
                 document.getElementById('max-' + p).innerText = fmt(max);
-
                 resultados[p] = mc;
             }
         });
-
         return resultados;
     }
 
     function initDias() {
         let select = document.getElementById('diaSelect');
-        for (let d = 1; d <= 31; d++) {
-            let opt = document.createElement('option');
-            opt.value = d;
-            opt.innerText = "Dia " + d;
-            select.appendChild(opt);
+        if(select.children.length === 0) {
+            for (let d = 1; d <= 31; d++) {
+                let opt = document.createElement('option');
+                opt.value = d;
+                opt.innerText = "Dia " + d;
+                select.appendChild(opt);
+            }
         }
     }
 
     function renderHistorico() {
         let tbody = document.getElementById('corpoHistorico');
         tbody.innerHTML = "";
-
         let soma = { milho: 0, soja: 0, trigo: 0 };
         let qtd = { milho: 0, soja: 0, trigo: 0 };
 
         for (let d = 1; d <= 31; d++) {
             let reg = historicoMensal[d] || {};
             let tr = document.createElement('tr');
-
             let txtMilho = reg.milho ? fmt(reg.milho) : "-";
             let txtSoja = reg.soja ? fmt(reg.soja) : "-";
             let txtTrigo = reg.trigo ? fmt(reg.trigo) : "-";
@@ -374,12 +345,7 @@
             if (reg.soja) { soma.soja += reg.soja; qtd.soja++; }
             if (reg.trigo) { soma.trigo += reg.trigo; qtd.trigo++; }
 
-            tr.innerHTML = `
-                <td><strong>Dia ${d}</strong></td>
-                <td>${txtMilho}</td>
-                <td>${txtSoja}</td>
-                <td>${txtTrigo}</td>
-            `;
+            tr.innerHTML = `<td><strong>Dia ${d}</strong></td><td>${txtMilho}</td><td>${txtSoja}</td><td>${txtTrigo}</td>`;
             tbody.appendChild(tr);
         }
 
@@ -391,7 +357,6 @@
     function salvarDiaNoHistorico() {
         let res = calcularDia();
         let dia = document.getElementById('diaSelect').value;
-
         if (res.milho && res.soja && res.trigo) {
             historicoMensal[dia] = res;
             localStorage.setItem('seab_sima_historico', JSON.stringify(historicoMensal));
@@ -404,10 +369,7 @@
 
     function exportarExcel() {
         let csvContent = "\uFEFF";
-        csvContent += "SEAB PR / DERAL - NR Laranjeiras do Sul\n";
-        csvContent += "HISTORICO MENSAL - MODA (MC)\n\n";
-        csvContent += "Dia do Mes;MILHO (MC);SOJA (MC);TRIGO (MC)\n";
-
+        csvContent += "SEAB PR / DERAL - NR Laranjeiras do Sul\nHISTORICO MENSAL - MODA (MC)\n\nDia do Mes;MILHO (MC);SOJA (MC);TRIGO (MC)\n";
         let soma = { milho: 0, soja: 0, trigo: 0 };
         let qtd = { milho: 0, soja: 0, trigo: 0 };
 
@@ -416,25 +378,21 @@
             let vMilho = reg.milho ? reg.milho.toFixed(2).replace('.', ',') : "";
             let vSoja = reg.soja ? reg.soja.toFixed(2).replace('.', ',') : "";
             let vTrigo = reg.trigo ? reg.trigo.toFixed(2).replace('.', ',') : "";
-
             if (reg.milho) { soma.milho += reg.milho; qtd.milho++; }
             if (reg.soja) { soma.soja += reg.soja; qtd.soja++; }
             if (reg.trigo) { soma.trigo += reg.trigo; qtd.trigo++; }
-
             csvContent += `Dia ${d};${vMilho};${vSoja};${vTrigo}\n`;
         }
 
         let mMilho = qtd.milho > 0 ? (soma.milho / qtd.milho).toFixed(2).replace('.', ',') : "0,00";
         let mSoja = qtd.soja > 0 ? (soma.soja / qtd.soja).toFixed(2).replace('.', ',') : "0,00";
         let mTrigo = qtd.trigo > 0 ? (soma.trigo / qtd.trigo).toFixed(2).replace('.', ',') : "0,00";
-
         csvContent += `MEDIA MENSAL;${mMilho};${mSoja};${mTrigo}\n`;
 
         let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         let link = document.createElement("a");
-        let url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", "SEAB_DERAL_Laranjeiras_Historico.csv");
+        link.href = URL.createObjectURL(blob);
+        link.download = "SEAB_DERAL_Laranjeiras_Historico.csv";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -448,10 +406,15 @@
         }
     }
 
+    // Mantém a sessão ativa enquanto a aba estiver aberta
     window.onload = function() {
-        initDias();
-        calcularDia();
-        renderHistorico();
+        if (sessionStorage.getItem('sima_autenticado') === 'true') {
+            document.getElementById('bloqueio-seguranca').style.display = 'none';
+            document.getElementById('conteudoSistema').style.display = 'block';
+            initDias();
+            calcularDia();
+            renderHistorico();
+        }
     };
 </script>
 
