@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAB PR / DERAL - SIMA</title>
+    <style>
+        :root {
+            --azul-escuro: #1b3b5f;
+            --azul-medio: #2b5b88;
+            --azul-claro: #e8f1f5;
+            --verde-principal: #2d8a56;
+            --verde-hover: #236c43;
+            --verde-claro: #e6f4ea;
+            --cinza-fundo: #f4f7f6;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--cinza-fundo); 
+            margin: 20px; 
+            color: #333;
+        }
+
+        .container { 
+            max-width: 950px; 
+            margin: auto; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            border-top: 6px solid var(--azul-escuro);
+        }
+
+        /* DESTAQUE SEAB PR / DERAL */
+        .header-destaque {
+            text-align: center;
+            background: linear-gradient(135deg, var(--azul-escuro), var(--azul-medio));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .header-destaque h1 {
+            margin: 0;
+            font-size: 1.5em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-destaque h2 {
+            margin: 5px 0 0 0;
+            font-size: 1.1em;
+            font-weight: 400;
+            color: #d1e5f7;
+        }
+
+        .sub-header {
+            text-align: center;
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #c5d3e8; text-align: center; padding: 9px; font-size: 0.95em; }
+        
+        /* Cabeçalhos e Linhas */
+        th.header-sima { background-color: var(--azul-escuro); color: white; text-align: left; font-size: 1.05em; }
+        th.header-prod { background-color: var(--azul-medio); color: white; }
+        td.empresa { font-weight: bold; text-align: left; background-color: #f8fafc; color: #2c3e50; }
+        
+        tr.calc-row { background-color: var(--verde-claro); font-weight: bold; }
+        tr.calc-row td { border-color: #b7e1cd; }
+        
+        input[type="number"] { 
+            width: 85%; 
+            padding: 6px; 
+            text-align: center; 
+            border: 1px solid #b0bec5; 
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--azul-medio);
+            box-shadow: 0 0 4px rgba(43, 91, 136, 0.4);
+        }
+
+        .seletor-dia {
+            text-align: center;
+            background-color: var(--azul-claro);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #d0e1ed;
+        }
+
+        .seletor-dia select {
+            padding: 6px 12px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid var(--azul-medio);
+            font-weight: bold;
+            color: var(--azul-escuro);
+        }
+
+        /* Botões */
+        .btn-container { text-align: center; margin: 20px 0; }
+        button { 
+            font-size: 0.95em; 
+            font-weight: bold; 
+            padding: 11px 18px; 
+            margin: 4px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            color: white; 
+            transition: background 0.2s, transform 0.1s;
+        }
+        button:active { transform: scale(0.98); }
+
+        .btn-calc { background-color: var(--azul-medio); }
+        .btn-calc:hover { background-color: var(--azul-escuro); }
+
+        .btn-save { background-color: var(--verde-principal); }
+        .btn-save:hover { background-color: var(--verde-hover); }
+
+        .btn-excel { background-color: #1d6f42; }
+        .btn-excel:hover { background-color: #144e2e; }
+
+        .btn-clear { background-color: #c0392b; font-size: 0.85em; padding: 8px 14px; }
+        .btn-clear:hover { background-color: #962d22; }
+
+        /* Tabela Histórico */
+        .historico-table th { background-color: var(--azul-escuro); color: white; }
+        .historico-table tr:nth-child(even) { background-color: #f8fafc; }
+        .media-row { background-color: #d4edda; font-weight: bold; font-size: 1.05em; color: #155724; }
+        .media-row td { border-top: 2px solid var(--verde-principal); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- DESTAQUE SOLICITADO -->
+    <div class="header-destaque">
+        <h1>SEAB PR / DERAL</h1>
+        <h2>Núcleo Regional de Laranjeiras do Sul</h2>
+    </div>
+
+    <div class="sub-header"><strong>SISTEMA SIMA - Cotação Agrícola</strong></div>
+    
+    <!-- Seletor do Dia do Mês -->
+    <div class="seletor-dia">
+        <label for="diaSelect"><strong>Dia do Mês para Registro:</strong> </label>
+        <select id="diaSelect">
+            <!-- Gerado de 1 a 31 via JS -->
+        </select>
+    </div>
+
+    <!-- TABELA DE ENTRADA E CÁLCULO DO DIA -->
+    <table>
+        <thead>
+            <tr>
+                <th class="header-sima">SIMA</th>
+                <th class="header-prod">MILHO</th>
+                <th class="header-prod">SOJA</th>
+                <th class="header-prod">TRIGO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="empresa">COPROSSEL</td>
+                <td><input type="number" step="0.01" class="val-milho" value="62.00"></td>
+                <td><input type="number" step="0.01" class="val-soja" value="142.00"></td>
+                <td><input type="number" step="0.01" class="val-trigo" value="82.00"></td>
+            </tr>
+            <tr>
+                <td class="empresa">COASUL</td>
+                <td><input type="number" step="0.01" class="val-milho" value="62.00"></td>
+                <td><input type="number" step="0.01" class="val-soja" value="141.00"></td>
+                <td><input type="number" step="0.01" class="val-trigo" value="82.00"></td>
+            </tr>
+            <tr>
+                <td class="empresa">COOPAVEL</td>
+                <td><input type="number" step="0.01" class="val-milho" value="61.00"></td>
+                <td><input type="number" step="0.01" class="val-soja" value="140.50"></td>
+                <td><input type="number" step="0.01" class="val-trigo" value="84.00"></td>
+            </tr>
+            <tr>
+                <td class="empresa">I. RIEDI</td>
+                <td><input type="number" step="0.01" class="val-milho" value="58.00"></td>
+                <td><input type="number" step="0.01" class="val-soja" value="139.00"></td>
+                <td><input type="number" step="0.01" class="val-trigo" value="84.00"></td>
+            </tr>
+            <tr>
+                <td class="empresa">TERRA CEREAIS</td>
+                <td><input type="number" step="0.01" class="val-milho" value="61.50"></td>
+                <td><input type="number" step="0.01" class="val-soja" value="141.00"></td>
+                <td><input type="number" step="0.01" class="val-trigo" value="80.00"></td>
+            </tr>
+
+            <!-- RESULTADOS DO DIA -->
+            <tr class="calc-row">
+                <td class="empresa">MÍNIMO</td>
+                <td id="min-milho">R$ 0,00</td>
+                <td id="min-soja">R$ 0,00</td>
+                <td id="min-trigo">R$ 0,00</td>
+            </tr>
+            <tr class="calc-row">
+                <td class="empresa">MODA (MC)</td>
+                <td id="mc-milho">R$ 0,00</td>
+                <td id="mc-soja">R$ 0,00</td>
+                <td id="mc-trigo">R$ 0,00</td>
+            </tr>
+            <tr class="calc-row">
+                <td class="empresa">MÁXIMO</td>
+                <td id="max-milho">R$ 0,00</td>
+                <td id="max-soja">R$ 0,00</td>
+                <td id="max-trigo">R$ 0,00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-container">
+        <button class="btn-calc" onclick="calcularDia()">1. Calcular do Dia</button>
+        <button class="btn-save" onclick="salvarDiaNoHistorico()">2. Registrar no Histórico Mensal</button>
+        <button class="btn-excel" onclick="exportarExcel()">3. Baixar Planilha (Excel)</button>
+    </div>
+
+    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #d0e1ed;">
+
+    <!-- TABELA DO HISTÓRICO MENSAL (DIAS 1 A 31) -->
+    <h3 style="text-align: center; color: var(--azul-escuro);">Acompanhamento Mensal - Moda (MC) por Dia</h3>
+    <table class="historico-table">
+        <thead>
+            <tr>
+                <th>Dia do Mês</th>
+                <th>MILHO (MC)</th>
+                <th>SOJA (MC)</th>
+                <th>TRIGO (MC)</th>
+            </tr>
+        </thead>
+        <tbody id="corpoHistorico">
+            <!-- Gerado via JS de 1 a 31 -->
+        </tbody>
+        <tfoot>
+            <tr class="media-row">
+                <td>MÉDIA MENSAL</td>
+                <td id="media-milho">R$ 0,00</td>
+                <td id="media-soja">R$ 0,00</td>
+                <td id="media-trigo">R$ 0,00</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <div class="btn-container">
+        <button class="btn-clear" onclick="limparHistorico()">Limpar Histórico do Mês</button>
+    </div>
+</div>
+
+<script>
+    let historicoMensal = JSON.parse(localStorage.getItem('seab_sima_historico')) || {};
+
+    function calcularModa(arr) {
+        if (arr.length === 0) return 0;
+        let contagem = {};
+        let maxFreq = 0;
+        let moda = arr[0];
+
+        for (let num of arr) {
+            contagem[num] = (contagem[num] || 0) + 1;
+            if (contagem[num] > maxFreq) {
+                maxFreq = contagem[num];
+                moda = num;
+            }
+        }
+        return moda;
+    }
+
+    function fmt(val) {
+        return "R$ " + val.toFixed(2).replace(".", ",");
+    }
+
+    function obterValores(classe) {
+        let inputs = document.querySelectorAll("." + classe);
+        let vals = [];
+        inputs.forEach(ip => {
+            let v = parseFloat(ip.value);
+            if (!isNaN(v)) vals.push(v);
+        });
+        return vals;
+    }
+
+    function calcularDia() {
+        let produtos = ['milho', 'soja', 'trigo'];
+        let resultados = {};
+
+        produtos.forEach(p => {
+            let vals = obterValores('val-' + p);
+            if (vals.length > 0) {
+                let min = Math.min(...vals);
+                let mc = calcularModa(vals);
+                let max = Math.max(...vals);
+
+                document.getElementById('min-' + p).innerText = fmt(min);
+                document.getElementById('mc-' + p).innerText = fmt(mc);
+                document.getElementById('max-' + p).innerText = fmt(max);
+
+                resultados[p] = mc;
+            }
+        });
+
+        return resultados;
+    }
+
+    function initDias() {
+        let select = document.getElementById('diaSelect');
+        for (let d = 1; d <= 31; d++) {
+            let opt = document.createElement('option');
+            opt.value = d;
+            opt.innerText = "Dia " + d;
+            select.appendChild(opt);
+        }
+    }
+
+    function renderHistorico() {
+        let tbody = document.getElementById('corpoHistorico');
+        tbody.innerHTML = "";
+
+        let soma = { milho: 0, soja: 0, trigo: 0 };
+        let qtd = { milho: 0, soja: 0, trigo: 0 };
+
+        for (let d = 1; d <= 31; d++) {
+            let reg = historicoMensal[d] || {};
+            let tr = document.createElement('tr');
+
+            let txtMilho = reg.milho ? fmt(reg.milho) : "-";
+            let txtSoja = reg.soja ? fmt(reg.soja) : "-";
+            let txtTrigo = reg.trigo ? fmt(reg.trigo) : "-";
+
+            if (reg.milho) { soma.milho += reg.milho; qtd.milho++; }
+            if (reg.soja) { soma.soja += reg.soja; qtd.soja++; }
+            if (reg.trigo) { soma.trigo += reg.trigo; qtd.trigo++; }
+
+            tr.innerHTML = `
+                <td><strong>Dia ${d}</strong></td>
+                <td>${txtMilho}</td>
+                <td>${txtSoja}</td>
+                <td>${txtTrigo}</td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        document.getElementById('media-milho').innerText = qtd.milho > 0 ? fmt(soma.milho / qtd.milho) : "R$ 0,00";
+        document.getElementById('media-soja').innerText = qtd.soja > 0 ? fmt(soma.soja / qtd.soja) : "R$ 0,00";
+        document.getElementById('media-trigo').innerText = qtd.trigo > 0 ? fmt(soma.trigo / qtd.trigo) : "R$ 0,00";
+    }
+
+    function salvarDiaNoHistorico() {
+        let res = calcularDia();
+        let dia = document.getElementById('diaSelect').value;
+
+        if (res.milho && res.soja && res.trigo) {
+            historicoMensal[dia] = res;
+            localStorage.setItem('seab_sima_historico', JSON.stringify(historicoMensal));
+            renderHistorico();
+            alert("Valores do Dia " + dia + " registrados com sucesso!");
+        } else {
+            alert("Preencha todos os campos para salvar.");
+        }
+    }
+
+    // EXPORTAR HISTÓRICO COMPLETO PARA PLANILHA EXCEL/CSV
+    function exportarExcel() {
+        let csvContent = "\uFEFF"; // Garante acentuação correta no Excel
+        csvContent += "SEAB PR / DERAL - NR Laranjeiras do Sul\n";
+        csvContent += "HISTORICO MENSAL - MODA (MC)\n\n";
+        csvContent += "Dia do Mes;MILHO (MC);SOJA (MC);TRIGO (MC)\n";
+
+        let soma = { milho: 0, soja: 0, trigo: 0 };
+        let qtd = { milho: 0, soja: 0, trigo: 0 };
+
+        for (let d = 1; d <= 31; d++) {
+            let reg = historicoMensal[d] || {};
+            let vMilho = reg.milho ? reg.milho.toFixed(2).replace('.', ',') : "";
+            let vSoja = reg.soja ? reg.soja.toFixed(2).replace('.', ',') : "";
+            let vTrigo = reg.trigo ? reg.trigo.toFixed(2).replace('.', ',') : "";
+
+            if (reg.milho) { soma.milho += reg.milho; qtd.milho++; }
+            if (reg.soja) { soma.soja += reg.soja; qtd.soja++; }
+            if (reg.trigo) { soma.trigo += reg.trigo; qtd.trigo++; }
+
+            csvContent += `Dia ${d};${vMilho};${vSoja};${vTrigo}\n`;
+        }
+
+        let mMilho = qtd.milho > 0 ? (soma.milho / qtd.milho).toFixed(2).replace('.', ',') : "0,00";
+        let mSoja = qtd.soja > 0 ? (soma.soja / qtd.soja).toFixed(2).replace('.', ',') : "0,00";
+        let mTrigo = qtd.trigo > 0 ? (soma.trigo / qtd.trigo).toFixed(2).replace('.', ',') : "0,00";
+
+        csvContent += `MEDIA MENSAL;${mMilho};${mSoja};${mTrigo}\n`;
+
+        let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        let link = document.createElement("a");
+        let url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", "SEAB_DERAL_Laranjeiras_Historico.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function limparHistorico() {
+        if (confirm("Tem certeza que deseja apagar o histórico do mês?")) {
+            historicoMensal = {};
+            localStorage.removeItem('seab_sima_historico');
+            renderHistorico();
+        }
+    }
+
+    window.onload = function() {
+        initDias();
+        calcularDia();
+        renderHistorico();
+    };
+</script>
+
+</body>
+</html>
